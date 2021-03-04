@@ -1,0 +1,105 @@
+<div class="csv-file-chooser-section">
+  <input
+    type="file"
+    #fileImportInput
+    name="File Upload"
+    id="csvFileUpload"
+    (change)="onFileSelect($event)"
+    accept=".txt"
+  />
+</div>
+<!-- User Data Table -->
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>UserId</th>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Url</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let csvData of csvRecords; let i = index">
+        <td>{{ i + 1 }}</td>
+
+        <td [routerLink]="csvData.tbl_id">
+          <input
+            [disabled]="true"
+            class="form-control"
+            mdbInput
+            type="text"
+            id="form1"
+            value="{{ csvData.user_id }}"
+          />
+        </td>
+
+        <td [routerLink]="csvData.tbl_id">
+          <input
+            [disabled]="true"
+            class="form-control"
+            mdbInput
+            type="text"
+            id="form1"
+            value="{{ csvData.date }}"
+          />
+        </td>
+
+        <td (click)="submitBtn(csvData)" [routerLink]="csvData.tbl_id">
+          <input
+            [disabled]="isEditing[i]"
+            #titleid
+            class="form-control"
+            mdbInput
+            type="text"
+            id="form1"
+            value="{{ csvData.title }}"
+          />
+        </td>
+
+        <td [routerLink]="csvData.tbl_id">
+          <input
+            [disabled]="isEditing[i]"
+            #descid
+            class="form-control"
+            mdbInput
+            type="text"
+            id="form1"
+            value="{{ csvData.description }}"
+          />
+        </td>
+
+        <td [routerLink]="csvData.tbl_id">
+          <input
+            [disabled]="isEditing[i]"
+            #urlid
+            class="form-control"
+            mdbInput
+            type="text"
+            id="form1"
+            value="{{ csvData.url }}"
+          />
+        </td>
+
+        <td>
+          <button (click)="update(i)">
+            {{ updateButton[i] }}
+          </button>
+        </td>
+
+        <td>
+          <button (click)="deleteRow(csvData.tbl_id)">delete</button>
+        </td>
+        <td>
+          <button [routerLink]="csvData.tbl_id" (click)="submitBtn(csvData)">
+            Expand
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

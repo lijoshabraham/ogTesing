@@ -1,0 +1,27 @@
+<h1>Inside</h1>
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">User Records:</h4>
+      <button type="button" class="close" data-dismiss="modal" (click)="hide()">
+        &times;
+      </button>
+    </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+      <p>User Id : {{ showExpanded.user_id }}</p>
+      <p>Date : {{ showExpanded.date }}</p>
+      <p>Title : {{ showExpanded.title }}</p>
+      <p>Description : {{ showExpanded.description }}</p>
+      <p>URL : {{ showExpanded.url }}</p>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <!-- <app-sociallinks></app-sociallinks> -->
+    </div>
+  </div>
+</div>
